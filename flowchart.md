@@ -58,25 +58,33 @@ graph TD
     AK -- 否 --> AM[處理遠端翻譯錯誤];
     AG -- 否 --> AN[跳過 transDesc];
 
+    %% buildPageConfig 更新 pageConfig，供 traverseNode 使用
     AJ --> AK;
+    J --> Q;
+    %% 警告不停止遍歷，但設定可能不完整
+    K --> Q;
 
-    J --> Q; %% buildPageConfig 更新 pageConfig，供 traverseNode 使用
-    K --> Q; %% 警告不停止遍歷，但設定可能不完整
+    %% 翻譯後的文本用於更新節點，是遍歷過程的一部分
+    AB --> Q;
+    %% 沒有翻譯，繼續遍歷
+    Z --> Q;
 
-    AB --> Q; %% 翻譯後的文本用於更新節點，是遍歷過程的一部分
-    Z --> Q; %% 沒有翻譯，繼續遍歷
-
-    AL --> AN; %% 顯示後，按鈕點擊流程結束
-    AM --> AN; %% 處理錯誤後，按鈕點擊流程結束
+    %% 顯示後，按鈕點擊流程結束
+    AL --> AN;
+    %% 處理錯誤後，按鈕點擊流程結束
+    AM --> AN;
 
     AN --> AO[transDesc 流程結束];
 
+    %% 循環遍歷
     Q --> AP[繼續遍歷下一個節點];
-    AP --> Q; %% 循環遍歷
+    AP --> Q;
 
-    O --> AP; %% 處理完所有突變後，繼續監聽
+    %% 處理完所有突變後，繼續監聽
+    O --> AP;
 
-    AD --> Q; %% URL 變化更新設定後，重新處理 DOM (透過 observer 或顯式掃描) - 程式碼顯示 MutationObserver 會在設定更新後處理
+    %% URL 變化更新設定後，重新處理 DOM (透過 observer 或顯式掃描) - 程式碼顯示 MutationObserver 會在設定更新後處理
+    AD --> Q;
     style K fill:#f9f,stroke:#333,stroke-width:2px
     style AM fill:#f9f,stroke:#333,stroke-width:2px
 ```
