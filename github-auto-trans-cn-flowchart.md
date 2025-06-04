@@ -113,11 +113,7 @@ flowchart TD
     %% ====== 結束節點 ======
     EndTurbo([結束])
 ```
-**註解與精簡分析：**  
-- 所有符號、運算子皆用全形（如：＝＝、＞、？）。
-- 節點標題均已適當分行（使用<br/>）以精簡長度。
-- 菱形節點每個都明確有「是」與「否」兩條分支路線。
+**腳本邏輯分析：**  
 - 主要流程包含：初始化(init)、監控變動(watchUpdate)、遍歷節點(traverseNode)、翻譯(transElement/transText)、描述翻譯按鈕(transDesc)、選單切換(registerMenuCommand)、頁型判斷(detectPageType)等。
-- 每個函數與主要運算步驟皆有對應節點，便於追蹤邏輯流向。
 
 > **此流程圖可直接貼入支援 Mermaid 的 Markdown 編輯器檢視。**
