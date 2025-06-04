@@ -111,7 +111,7 @@ flowchart TD
     LogWarn & ReturnType --> buildPC
 
     %% ====== 結束節點 ======
-    EndTurbo（[結束]）
+    EndTurbo([結束])
 ```
 **註解與精簡分析：**  
 - 所有符號、運算子皆用全形（如：＝＝、＞、？）。
